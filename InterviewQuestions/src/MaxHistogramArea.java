@@ -25,7 +25,52 @@
  * http://www.geeksforgeeks.org/largest-rectangle-under-histogram/
  */
 
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Scanner;
 
 public class MaxHistogramArea {
+
+  public static int calculateMaxHistArea(int[] barGraphHeight) {
+    Deque<Integer> indexHeight = new LinkedList<>();
+    int maxArea = 0;
+    int area = 0;
+    int top = 0;
+    int i;
+    for (i = 0; i < barGraphHeight.length; ) {
+      if (indexHeight.isEmpty() || barGraphHeight[indexHeight.peekFirst()] <= barGraphHeight[i])
+        indexHeight.offerFirst(i++);
+      else {
+        top = indexHeight.pollFirst();
+        if (indexHeight.isEmpty())
+          area = barGraphHeight[top] * i;
+        else
+          area = barGraphHeight[top] * (i - indexHeight.peekFirst() - 1);
+        if (area > maxArea)
+          maxArea = area;
+      }
+    }
+    while (!indexHeight.isEmpty()) {
+      top = indexHeight.pollFirst();
+      if (indexHeight.isEmpty())
+        area = barGraphHeight[top] * i;
+      else
+        area = barGraphHeight[top] * (i - indexHeight.peekFirst() - 1);
+      if (area > maxArea)
+        maxArea = area;
+    }
+    return maxArea;
+  }
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int barGraphHeight[] = new int[n];
+    for (int i = 0; i < n; i++) {
+      barGraphHeight[i] = sc.nextInt();
+    }
+    int result = calculateMaxHistArea(barGraphHeight);
+    System.out.println(result);
+  }
 
 }
