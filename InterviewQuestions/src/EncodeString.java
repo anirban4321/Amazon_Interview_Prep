@@ -26,30 +26,29 @@ Output: !!!@@@@!!!!
 
 public class EncodeString {
 
-   static void encodeString(char[] input)
-    {
-        char evenpos='!';
-        char oddpos='@';
-        String s="";
-        //char[] ch =new char[input.length];
-        int repeat=0;
-        for(int i=0;i<input.length;i++)
-        {
-            int ascii=input[i];
-            repeat= ascii>=97? ascii-96:ascii-64;
-            for(int j=0;j<repeat;j++) {
-                if (i % 2 == 0)
-                    System.out.printf("%c",evenpos);
-                else
-                    System.out.printf("%c",oddpos);
-            }
+  static void encodeString(char[] input) {
+    char evenpos = '!';
+    char oddpos = '@';
+    String s = "";
+    //char[] ch =new char[input.length];
+    int repeat = 0;
+    for (int i = 0; i < input.length; i++) {
+      int ascii = input[i];
+      repeat = ascii >= 97 ? ascii - 96 : ascii - 64;
+      for (int j = 0; j < repeat; j++) {
+        if (i % 2 == 0)
+          System.out.printf("%c", evenpos);
+        else
+          System.out.printf("%c", oddpos);
+      }
 
-        }
     }
-    public static void main(String[] args) {
-       String s="CDE";
-       char[] ch = s.toCharArray();
-       encodeString(ch);
-    }
+  }
+
+  public static void main(String[] args) {
+    String s = "CDE";
+    char[] ch = s.toCharArray();
+    encodeString(ch);
+  }
 
 }

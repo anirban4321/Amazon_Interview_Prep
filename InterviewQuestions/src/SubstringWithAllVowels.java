@@ -7,37 +7,36 @@ contain all the vowels at-least one time and there are no consonants (non-vowel 
  */
 public class SubstringWithAllVowels {
 
-    public static boolean isVowel(char ch){
-        if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u')
-            return true;
-        else
-            return false;
-    }
-    static void findSubstringWithAllVowels(String s)
-    {
-        HashSet<Character> set=new HashSet<>();
-        int start=0;
-        int count=0;
-        for(int i=0;i<s.length();i++)
-        {
-                if(isVowel(s.charAt(i)))
-                {
-                    set.add(s.charAt(i));
-                    if(set.size()==5){
-                        count++;
-                        System.out.println(s.substring(start,i+1)+" ");}
-                }else{
-                    start =i+1;
-                    set.clear();
-                }
+  public static boolean isVowel(char ch) {
+    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+      return true;
+    else
+      return false;
+  }
 
+  static void findSubstringWithAllVowels(String s) {
+    HashSet<Character> set = new HashSet<>();
+    int start = 0;
+    int count = 0;
+    for (int i = 0; i < s.length(); i++) {
+      if (isVowel(s.charAt(i))) {
+        set.add(s.charAt(i));
+        if (set.size() == 5) {
+          count++;
+          System.out.println(s.substring(start, i + 1) + " ");
         }
-        System.out.println(count);
-    }
+      } else {
+        start = i + 1;
+        set.clear();
+      }
 
-    public static void main(String[] args) {
-        //String str = "aeoibsddaeiouudb";
-        String str= "aeouisddaaeeiouua";
-        findSubstringWithAllVowels(str);
     }
+    System.out.println(count);
+  }
+
+  public static void main(String[] args) {
+    //String str = "aeoibsddaeiouudb";
+    String str = "aeouisddaaeeiouua";
+    findSubstringWithAllVowels(str);
+  }
 }

@@ -20,28 +20,26 @@ Input: str = “daceh”
 Output: 16
  */
 public class CountVowelsInSubstring {
-    public static void main(String args[])
-    {
-        String s = "daceh";
-        System.out.println(vowel_calc(s));
-    }
 
-    private static int vowel_calc(String s) {
-        int count=0;
-        int a[]=new int [s.length()];
-        for(int i=0;i<s.length();i++)
-        {
-             if(i==0)
-                 a[i]=s.length();
-             else
-                 a[i]=(s.length()-i)+a[i-1]-i;
-        }
-        for(int i=0;i<s.length();i++)
-        {
-            char ch=s.charAt(i);
-            if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u')
-                count+=a[i];
-        }
-        return count;
+  public static void main(String args[]) {
+    String s = "daceh";
+    System.out.println(vowel_calc(s));
+  }
+
+  private static int vowel_calc(String s) {
+    int count = 0;
+    int a[] = new int[s.length()];
+    for (int i = 0; i < s.length(); i++) {
+      if (i == 0)
+        a[i] = s.length();
+      else
+        a[i] = (s.length() - i) + a[i - 1] - i;
     }
+    for (int i = 0; i < s.length(); i++) {
+      char ch = s.charAt(i);
+      if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+        count += a[i];
+    }
+    return count;
+  }
 }
